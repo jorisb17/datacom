@@ -8,7 +8,7 @@ const initialState = {
 export const changeRoute = (state=initialState, action={}) =>{
     switch(action.type){
         case CHANGE_ROUTE:
-            document.title = `${action.payload} | doopsgezinde gemeente Bussum-Naarden`;
+            document.title = action.payload;
             return Object.assign({}, state, {route: action.payload});
         default:
             return state

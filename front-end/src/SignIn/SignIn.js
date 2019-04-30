@@ -1,17 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from "react-redux";
+
 import Avatar from '@material-ui/core/Avatar/index';
 import Button from '@material-ui/core/Button/index';
 import CssBaseline from '@material-ui/core/CssBaseline/index';
 import FormControl from '@material-ui/core/FormControl/index';
-import FormControlLabel from '@material-ui/core/FormControlLabel/index';
-import Checkbox from '@material-ui/core/Checkbox/index';
 import Input from '@material-ui/core/Input/index';
 import InputLabel from '@material-ui/core/InputLabel/index';
+
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper/index';
 import Typography from '@material-ui/core/Typography/index';
 import withStyles from '@material-ui/core/styles/withStyles';
+
+import {signIn} from "../actions/AuthActions";
 
 const styles = theme => ({
     main: {
@@ -45,49 +48,86 @@ const styles = theme => ({
     },
 });
 
-function SignIn(props) {
-    const { classes } = props;
+class SignIn extends Component{
+    state ={
+        signInEmail: '',
+        signInPassword: ''
+    };
 
-    return (
-        <main className={classes.main}>
-            <CssBaseline />
-            <Paper className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Sign in
-                </Typography>
-                <form className={classes.form}>
-                    <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="email">Email Address</InputLabel>
-                        <Input id="email" name="email" autoComplete="email" autoFocus />
-                    </FormControl>
-                    <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="password">Password</InputLabel>
-                        <Input name="password" type="password" id="password" autoComplete="current-password" />
-                    </FormControl>
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.submit}
-                    >
+    onEmailChange = (event) => {
+        this.setState({signInEmail: event.target.value})
+    };
+
+    onPasswordChange = (event) => {
+        this.setState({signInPassword: event.target.value})
+    };
+
+    handleSubmit = () => {
+        fetch('http://localhost:3000/signin', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                email: this.state.signInEmail,
+                password: this.state.signInPassword
+            })
+        })
+            .then(response => response.json())
+            .then(user => {
+                if (user.id) {
+                    this.props.signIn(user);
+                }
+            });
+        this.setState({
+            signInEmail: '',
+            signInPassword: ''
+        });
+    }
+
+    render(){
+        const { classes } = this.props;
+        const { signInEmail, signInPassword } = this.state;
+        return (
+            <main className={classes.main}>
+                <CssBaseline />
+                <Paper className={classes.paper}>
+                    <Avatar className={classes.avatar}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
                         Sign in
-                    </Button>
-                </form>
-            </Paper>
-        </main>
-    );
+                    </Typography>
+                    <div className={classes.form}>
+                        <FormControl margin="normal" required fullWidth>
+                            <InputLabel htmlFor="email">Email Address</InputLabel>
+                            <Input id="email" name="email" autoComplete="email" autoFocus value={signInEmail} onChange={this.onEmailChange}/>
+                        </FormControl>
+                        <FormControl margin="normal" required fullWidth>
+                            <InputLabel htmlFor="password">Password</InputLabel>
+                            <Input name="password" type="password" id="password" autoComplete="current-password" value={signInPassword} onChange={this.onPasswordChange}/>
+                        </FormControl>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                            onClick={this.handleSubmit}
+                        >
+                            Sign in
+                        </Button>
+                    </div>
+                </Paper>
+            </main>
+        );
+    }
 }
 
 SignIn.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SignIn);
+const actions = (dispatch) =>({
+    signIn: (user) => dispatch(signIn(user))
+});
+
+export default connect(null, actions)(withStyles(styles)(SignIn));

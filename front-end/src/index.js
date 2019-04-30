@@ -4,7 +4,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import "./index.css";
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
@@ -13,7 +13,8 @@ import { theme } from './theme';
 import reducers from './reducers'
 
 const logger = createLogger();
-const store = createStore(reducers, applyMiddleware(thunkMiddleware, logger));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware, logger)));
 
 ReactDOM.render(
     <MuiThemeProvider theme={theme}>
