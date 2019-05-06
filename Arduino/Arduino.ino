@@ -20,6 +20,9 @@ int LEDStatus = 0;
 
 int state = 0;
 
+void error();
+void printWiFiStatus();
+
 void setup() {
   Serial.begin(9600);
   pinMode(BUTTON, INPUT);
@@ -29,8 +32,7 @@ void setup() {
 
   // check voor WiFi module
   if (WiFi.status() == WL_NO_MODULE) {
-    Serial.println("Communication with WiFi module failed!");
-    // stop
+    Serial.println("Communicatie met wifi module mislukt");
     while (true) {
       error();
     }
@@ -39,57 +41,53 @@ void setup() {
   //check de firmware
   String fv = WiFi.firmwareVersion();
   if (fv < "1.0.0") {
-    Serial.println("Please upgrade the firmware");
+    Serial.println("Upgrade firmware");
+    while (true) {
+      error();
+    }
   }
 
 
   // print de naam (SSID)
-  Serial.print("Creating access point named: ");
+  Serial.print("Aanmaken acces point: ");
   Serial.println(ssid);
 
   status = WiFi.beginAP(ssid, pass);
 
   if (status != WL_AP_LISTENING) {
-    Serial.println("Creating access point failed");
-    // don't continue
+    Serial.println("Niet gelukt om acces point aan te maken");
     while (true) {
       error();
     }
   }
 
   // wacht 10 seconden
-  delay(10000);
+  delay(5000);
   server.begin();
   printWiFiStatus();
 }
 
-
+int adres = 0;
 void loop() {
   switch (state) {
-    case 1:
+    case 12:
       error();
     default:
       break;
   }
-
+  digitalWrite(RLED, HIGH);
   while (client.available()) {
     char c = client.read();
     Serial.write(c);
+    adres = c;
   }
   if (status != WiFi.status()) {
     status = WiFi.status();
   }
-
-  if (digitalRead(BUTTON) == HIGH) {
+  if(digitalRead(BUTTON) == HIGH){
     httpRequest(20);
+    delay(500);
   }
-
-  if (LEDStatus == 1) {
-    digitalWrite(RLED, LOW);
-  } else {
-    digitalWrite(RLED, HIGH);
-  }
-
 }
 
 void httpRequest(int temp) {
@@ -97,26 +95,18 @@ void httpRequest(int temp) {
   digitalWrite(YLED, HIGH);
   if (client.connect(api, 3000)) {
     Serial.println("connecting to API");
-    sendData(1);
     client.print("GET /arduino?temp=");
     client.print(String(temp));
     client.println(" HTTP/1.1");
-    client.println("Host: example.org");
+    client.println("Host: 192.168.4.2");
     client.println("User-Agent: ArduinoWiFi/1.1");
     client.println("Connection: close");
     client.println();
-
-    // note the time that the connection was made:
-    if (client.read() == "ok") {
-      client.println();
-      digitalWrite(YLED, LOW);
-    }
+  } else {
+    // if you couldn't make a connection:
+    Serial.println("connection failed");
   }
-
-} else {
-  // if you couldn't make a connection:
-  Serial.println("connection failed");
-}
+  digitalWrite(YLED, LOW);
 }
 
 void error() {
@@ -142,11 +132,8 @@ void receiveData(char receive) {
 
 
 void printWiFiStatus() {
-  // print de SSID van het netwerk
   Serial.print("SSID: ");
   Serial.println(WiFi.SSID());
-
-  // print WiFi shield IP address:
   IPAddress ip = WiFi.localIP();
   Serial.print("IP Address: ");
   Serial.println(ip);

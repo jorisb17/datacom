@@ -1,24 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom'
 
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
+import AppBar from '@material-ui/core/AppBar/index';
+import CssBaseline from '@material-ui/core/CssBaseline/index';
+import Divider from '@material-ui/core/Divider/index';
+import Drawer from '@material-ui/core/Drawer/index';
+import Hidden from '@material-ui/core/Hidden/index';
+import IconButton from '@material-ui/core/IconButton/index';
 import DashboardIcon from '@material-ui/icons/DashboardRounded';
 import TimelineIcon from '@material-ui/icons/TimelineRounded';
 import SettingsIcon from '@material-ui/icons/SettingsRounded';
 import MenuIcon from "@material-ui/icons/MenuRounded"
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List/index';
+import ListItem from '@material-ui/core/ListItem/index';
+import ListItemIcon from '@material-ui/core/ListItemIcon/index'
+import ListItemText from '@material-ui/core/ListItemText/index';
+import Toolbar from '@material-ui/core/Toolbar/index';
+import Typography from '@material-ui/core/Typography/index';
+import { withStyles } from '@material-ui/core/styles/index';
 
 const drawerWidth = 240;
 
@@ -71,14 +72,18 @@ class ResDrawer extends React.Component {
                 <div className={classes.toolbar} />
                 <Divider />
                 <List>
+                    <Link style={{"text-decoration": "none"}} to={"./"} >
                     <ListItem button>
                         <ListItemIcon><DashboardIcon /></ListItemIcon>
                         <ListItemText primary={"Dashboard"} />
                     </ListItem>
+                    </Link>
+                    <Link style={{"text-decoration": "none"}} to={'./temp'}>
                     <ListItem button>
                         <ListItemIcon><TimelineIcon /></ListItemIcon>
                         <ListItemText primary={"Sensor 1"} />
                     </ListItem>
+                    </Link>
                     <ListItem button>
                         <ListItemIcon><TimelineIcon /></ListItemIcon>
                         <ListItemText primary={"Sensor 2"} />

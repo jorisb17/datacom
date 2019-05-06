@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {setRoute} from '../actions/NavActions'
 import Chart from '../Components/Chart/Chart'
-import Typography from '@material-ui/core/Typography'
+import Table from '../Components/Table/Table'
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
-    chartContainer: {
-        marginLeft: -22,
-    },
+    tableContainer: {
+        height: 320,
+    }
 };
 
 class Index extends Component {
@@ -31,24 +31,11 @@ class Index extends Component {
         const {classes} = this.props;
         return (
             <div>
-                <Typography variant="h4" gutterBottom component="h2">
-                    Temperatuur
-                </Typography>
-                <div className={classes.chartContainer}>
-                    <Chart data={data}/>
+                <Chart data={data} />
+                <br/>
+                <div className={classes.tableContainer}>
+                    <Table />
                 </div>
-                <Typography variant="h4" gutterBottom component="h2">
-                    Sensor 2
-                </Typography>
-                <div className={classes.chartContainer}>
-                    <Chart data={data}/>
-                </div><Typography variant="h4" gutterBottom component="h2">
-                Sensor 3
-                 </Typography>
-                <div className={classes.chartContainer}>
-                    <Chart data={data}/>
-                </div>
-
             </div>
         );
     }

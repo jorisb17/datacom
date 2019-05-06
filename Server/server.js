@@ -21,6 +21,8 @@ app.use(cores());
 
 const saltRounds = 10;
 
+let adres = '01101101';
+
 
 app.get('/', (req, res) =>{
     res.json(db.users);
@@ -90,6 +92,10 @@ app.get("/arduino", (req, res) =>{
     res.status(200).json("ok");
 });
 
-app.listen(3000, ()=>{
+app.get("/adres", (req, res) =>{
+    res.status(200).json(adres);
+});
+
+app.listen(3000, "192.168.4.2", ()=>{
     console.log('app is running on port 3000');
 });
