@@ -4,6 +4,8 @@ import {setRoute} from '../actions/NavActions'
 import Chart from '../Components/Chart/Chart'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles';
+import {apiCall} from "../api";
+import LoadingComponent from "../Components/Loading/LoadingComponent";
 
 const styles = {
     chartContainer: {
@@ -12,43 +14,39 @@ const styles = {
 };
 
 class Index extends Component {
+    state = {
+        modules: [],
+        isPending: true
+    };
 
     componentDidMount() {
-        this.props.onRouteChange("Dashboard")
+        this.props.onRouteChange("Dashboard");
+        apiCall('http://localhost:3000/modules')
+            .then(data => this.setState({modules: data, isPending: false}))
+            .catch(err => console.log(err))
     }
 
-
     render() {
-        const data = [
-            { name: '0:00', Temperatuur: 20},
-            { name: '0:20', Temperatuur: 22},
-            { name: '0:25', Temperatuur: 25},
-            { name: '0:40', Temperatuur: 18},
-            { name: '0:54', Temperatuur: 30},
-            { name: '1:40', Temperatuur: 31},
-            { name: '1:50', Temperatuur: 34},
-        ];
         const {classes} = this.props;
         return (
             <div>
-                <Typography variant="h4" gutterBottom component="h2">
-                    Temperatuur
-                </Typography>
-                <div className={classes.chartContainer}>
-                    <Chart data={data}/>
-                </div>
-                <Typography variant="h4" gutterBottom component="h2">
-                    Sensor 2
-                </Typography>
-                <div className={classes.chartContainer}>
-                    <Chart data={data}/>
-                </div><Typography variant="h4" gutterBottom component="h2">
-                Sensor 3
-                 </Typography>
-                <div className={classes.chartContainer}>
-                    <Chart data={data}/>
-                </div>
+                {this.state.isPending ?
+                        <LoadingComponent/>
+                        :
+                    this.state.modules.map(module => {
+                        return (
+                            <div key={module.id}>
+                                <Typography variant="h4" gutterBottom component="h2">
+                                    {module.name}
+                                </Typography>
+                                <div className={classes.chartContainer}>
+                                    <Chart data={module.data}/>
+                                </div>
+                            </div>
+                        )
+                    })
 
+                }
             </div>
         );
     }

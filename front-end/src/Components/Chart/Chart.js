@@ -18,7 +18,9 @@ function Chart({data}) {
                 <CartesianGrid vertical={false} strokeDasharray="3 3" />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="Temperatuur" stroke="#ff4081" />
+                <Line type="monotone" dataKey="temp" stroke="#ff4081" />
+                <Line type="monotone" dataKey="licht" stroke="#00e676" />
+                <Line type="monotone" dataKey="sensor" stroke="#00b0ff" />
             </LineChart>
         </ResponsiveContainer>
     );

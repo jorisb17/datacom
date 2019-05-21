@@ -20,6 +20,8 @@ import ListItemText from '@material-ui/core/ListItemText/index';
 import Toolbar from '@material-ui/core/Toolbar/index';
 import Typography from '@material-ui/core/Typography/index';
 import { withStyles } from '@material-ui/core/styles/index';
+import {apiCall} from "../../api";
+import LoadingComponent from "../Loading/LoadingComponent";
 
 const drawerWidth = 240;
 
@@ -58,7 +60,14 @@ const styles = theme => ({
 class ResDrawer extends React.Component {
     state = {
         mobileOpen: false,
+        modules: [],
+        isPending: true
     };
+    componentDidMount() {
+        apiCall("http://localhost:3000/modules")
+            .then(data => this.setState({modules: data, isPending:false}))
+            .catch(err => console.log(err));
+    }
 
     handleDrawerToggle = () => {
         this.setState(state => ({ mobileOpen: !state.mobileOpen }));
@@ -72,26 +81,23 @@ class ResDrawer extends React.Component {
                 <div className={classes.toolbar} />
                 <Divider />
                 <List>
-                    <Link style={{"text-decoration": "none"}} to={"./"} >
+                    <Link style={{"textDecoration": "none"}} to={"/"} >
                     <ListItem button>
                         <ListItemIcon><DashboardIcon /></ListItemIcon>
                         <ListItemText primary={"Dashboard"} />
                     </ListItem>
                     </Link>
-                    <Link style={{"text-decoration": "none"}} to={'./temp'}>
-                    <ListItem button>
-                        <ListItemIcon><TimelineIcon /></ListItemIcon>
-                        <ListItemText primary={"Sensor 1"} />
-                    </ListItem>
-                    </Link>
-                    <ListItem button>
-                        <ListItemIcon><TimelineIcon /></ListItemIcon>
-                        <ListItemText primary={"Sensor 2"} />
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemIcon><TimelineIcon /></ListItemIcon>
-                        <ListItemText primary={"Sensor 3"} />
-                    </ListItem>
+                    {this.state.modules.map(module =>{
+                        return(
+                            <Link style={{"textDecoration": "none"}} to={`/module/${module.id}`}>
+                                <ListItem button>
+                                    <ListItemIcon><TimelineIcon /></ListItemIcon>
+                                    <ListItemText primary={module.name} />
+                                </ListItem>
+                            </Link>
+                        )
+                    })
+                    }
                 </List>
                 <Divider />
                 <List>
@@ -104,55 +110,60 @@ class ResDrawer extends React.Component {
         );
 
         return (
-            <div className={classes.root}>
-                <CssBaseline />
-                <AppBar position="fixed" className={classes.appBar}>
-                    <Toolbar>
-                        <IconButton
-                            color="inherit"
-                            aria-label="Open drawer"
-                            onClick={this.handleDrawerToggle}
-                            className={classes.menuButton}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="h6" color="inherit" noWrap>
-                            {this.props.route}
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <nav className={classes.drawer}>
-                    {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-                    <Hidden smUp implementation="css">
-                        <Drawer
-                            container={this.props.container}
-                            variant="temporary"
-                            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                            open={this.state.mobileOpen}
-                            onClose={this.handleDrawerToggle}
-                            classes={{
-                                paper: classes.drawerPaper,
-                            }}
-                        >
-                            {drawer}
-                        </Drawer>
-                    </Hidden>
-                    <Hidden xsDown implementation="css">
-                        <Drawer
-                            classes={{
-                                paper: classes.drawerPaper,
-                            }}
-                            variant="permanent"
-                            open
-                        >
-                            {drawer}
-                        </Drawer>
-                    </Hidden>
-                </nav>
-                <main className={classes.content}>
-                    <div className={classes.toolbar} />
-                    {children}
-                </main>
+            <div>
+            {this.state.isPending ?
+                <LoadingComponent/>
+                :
+                <div className={classes.root}>
+                    <CssBaseline />
+                    <AppBar position="fixed" className={classes.appBar}>
+                        <Toolbar>
+                            <IconButton
+                                color="inherit"
+                                aria-label="Open drawer"
+                                onClick={this.handleDrawerToggle}
+                                className={classes.menuButton}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Typography variant="h6" color="inherit" noWrap>
+                                {this.props.route}
+                            </Typography>
+                        </Toolbar>
+                    </AppBar>
+                    <nav className={classes.drawer}>
+                        <Hidden smUp implementation="css">
+                            <Drawer
+                                container={this.props.container}
+                                variant="temporary"
+                                anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                                open={this.state.mobileOpen}
+                                onClose={this.handleDrawerToggle}
+                                classes={{
+                                    paper: classes.drawerPaper,
+                                }}
+                            >
+                                {drawer}
+                            </Drawer>
+                        </Hidden>
+                        <Hidden xsDown implementation="css">
+                            <Drawer
+                                classes={{
+                                    paper: classes.drawerPaper,
+                                }}
+                                variant="permanent"
+                                open
+                            >
+                                {drawer}
+                            </Drawer>
+                        </Hidden>
+                    </nav>
+                    <main className={classes.content}>
+                        <div className={classes.toolbar} />
+                        {children}
+                    </main>
+                </div>
+            }
             </div>
         );
     }
@@ -160,8 +171,6 @@ class ResDrawer extends React.Component {
 
 ResDrawer.propTypes = {
     classes: PropTypes.object.isRequired,
-    // Injected by the documentation to work in an iframe.
-    // You won't need it on your project.
     container: PropTypes.object,
     theme: PropTypes.object.isRequired,
 };
@@ -171,5 +180,6 @@ const mapState = (state) => {
         route: state.changeRoute.route
     }
 };
+
 
 export default connect(mapState)(withStyles(styles, { withTheme: true })(ResDrawer));

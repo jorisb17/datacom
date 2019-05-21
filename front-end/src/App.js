@@ -11,8 +11,8 @@ const AsyncMain = Loadable({
     loading: LoadingComponent
 });
 
-const AsyncTemp = Loadable({
-    loader: () => import('./Temp/'),
+const AsyncModule = Loadable({
+    loader: () => import('./Modules/ModuleDetailedPage'),
     loading: LoadingComponent
 });
 
@@ -28,11 +28,11 @@ class App extends Component{
                 <Route
                     render={() => (
                         <div>
-                            {this.props.auth?
+                            {this.state.auth?
                             <ResDrawer>
                                 <Switch>
                                     <Route exact path="/" component={AsyncMain}/>
-                                    <Route exact path="/temp" component={AsyncTemp}/>
+                                    <Route path="/module/:id" component={AsyncModule}/>
                                 </Switch>
                             </ResDrawer>
                             :<SignIn/>}
