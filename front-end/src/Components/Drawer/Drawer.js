@@ -20,7 +20,7 @@ import ListItemText from '@material-ui/core/ListItemText/index';
 import Toolbar from '@material-ui/core/Toolbar/index';
 import Typography from '@material-ui/core/Typography/index';
 import { withStyles } from '@material-ui/core/styles/index';
-import {apiCall} from "../../api";
+
 import LoadingComponent from "../Loading/LoadingComponent";
 
 const drawerWidth = 240;
@@ -60,14 +60,7 @@ const styles = theme => ({
 class ResDrawer extends React.Component {
     state = {
         mobileOpen: false,
-        modules: [],
-        isPending: true
     };
-    componentDidMount() {
-        apiCall("http://localhost:3000/modules")
-            .then(data => this.setState({modules: data, isPending:false}))
-            .catch(err => console.log(err));
-    }
 
     handleDrawerToggle = () => {
         this.setState(state => ({ mobileOpen: !state.mobileOpen }));
@@ -81,23 +74,12 @@ class ResDrawer extends React.Component {
                 <div className={classes.toolbar} />
                 <Divider />
                 <List>
-                    <Link style={{"textDecoration": "none"}} to={"/"} >
-                    <ListItem button>
-                        <ListItemIcon><DashboardIcon /></ListItemIcon>
-                        <ListItemText primary={"Dashboard"} />
-                    </ListItem>
+                    <Link style={{"textDecoration": "none"}} to={`/`}>
+                        <ListItem button>
+                            <ListItemIcon><TimelineIcon /></ListItemIcon>
+                            <ListItemText primary={"Module lijst"} />
+                        </ListItem>
                     </Link>
-                    {this.state.modules.map(module =>{
-                        return(
-                            <Link style={{"textDecoration": "none"}} to={`/module/${module.id}`}>
-                                <ListItem button>
-                                    <ListItemIcon><TimelineIcon /></ListItemIcon>
-                                    <ListItemText primary={module.name} />
-                                </ListItem>
-                            </Link>
-                        )
-                    })
-                    }
                 </List>
                 <Divider />
                 <List>

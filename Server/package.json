@@ -10,7 +10,9 @@
     "express": "^4.16.4",
     "knex": "^0.16.5",
     "nodemon": "^1.18.11",
-    "pg": "^7.10.0"
+    "pg": "^7.10.0",
+    "sqlite3": "^4.0.8",
+    "util": "^0.12.0"
   },
   "scripts": {
     "start": "nodemon server.js"

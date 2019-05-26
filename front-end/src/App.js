@@ -7,12 +7,17 @@ import SignIn from './SignIn/SignIn';
 import {connect} from "react-redux";
 
 const AsyncMain = Loadable({
-    loader: () => import('./Main/'),
+    loader: () => import('./Modules/ModulePage'),
     loading: LoadingComponent
 });
 
-const AsyncModule = Loadable({
-    loader: () => import('./Modules/ModuleDetailedPage'),
+const AsyncModules = Loadable({
+    loader: () => import('./Modules/ModulePage'),
+    loading: LoadingComponent
+});
+
+const AsyncModuleDetailed = Loadable({
+    loader: () => import('./Modules/Detailed/ModuleDetailedPage'),
     loading: LoadingComponent
 });
 
@@ -32,7 +37,8 @@ class App extends Component{
                             <ResDrawer>
                                 <Switch>
                                     <Route exact path="/" component={AsyncMain}/>
-                                    <Route path="/module/:id" component={AsyncModule}/>
+                                    <Route exact path="/modules" component={AsyncModules} />
+                                    <Route path="/modules/:id" component={AsyncModuleDetailed}/>
                                 </Switch>
                             </ResDrawer>
                             :<SignIn/>}

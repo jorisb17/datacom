@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {requestModule} from "../actions/ModuleActions";
-import {setRoute} from "../actions/NavActions";
-import LoadingComponent from "../Components/Loading/LoadingComponent";
+import {requestModule} from "../../actions/ModuleActions";
+import {setRoute} from "../../actions/NavActions";
+import LoadingComponent from "../../Components/Loading/LoadingComponent";
 
 
 class ModuleDetailedPage extends Component {
-    constructor(props, context) {
-        super(props, context);
-    }
 
     componentDidMount() {
         this.props.requestModule(this.props.match.params.id);
