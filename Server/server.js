@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const cores = require('cors');
 const knex = require('knex');
 const util = require('util');
+const fs = require('fs');
 
 const db = knex({
     client: 'pg',
@@ -59,73 +60,72 @@ const modules = ({
 });
 
 app.get("/arduino", (req, res) =>{
-    const max = modules.modules[0].temp.length;
-    console.log(max);
-    let data = [];
-    for(let i = 0; i < max; i++){
-        const obj ={
-            name: modules.modules[0].tijd[i],
-            temp: modules.modules[0].temp[i],
-            licht: modules.modules[0].licht[i],
-            sensor: modules.modules[0].sensor[i],
-        };
-        data.push(obj);
-    }
     const {mintemp, gemtemp, maxtemp, minlicht, maxlicht, gemlicht, minsensor, maxsensor, gemsensor, moduleID, tijd} = req.query;
-    // createModule(mintemp, gemtemp, maxtemp, minlicht, maxlicht, gemlicht, minsensor, maxsensor, gemsensor, moduleID, res, tijd);
-    // console.log(mintemp)
-    const mintemparray = [parseFloat(mintemp)];
-    const maxtemparray = [parseFloat(maxtemp)];
-    const gemtemparray = [parseFloat(gemtemp)];
-    const minlichtarray = [parseFloat(minlicht)];
-    const maxlichtarray = [parseFloat(maxlicht)];
-    const gemlichtarray = [parseFloat(gemlicht)];
-    const minsensorarray = [parseFloat(minsensor)];
-    const maxsensorarray = [parseFloat(maxsensor)];
-    const gemsensorarray = [parseFloat(gemlicht)];
-    const tijdarray = [tijd];
-
-    knex('modules').insert({
-        mintemp: [0.0, 0.0],
-        gemtemp: [0.0, 0.0],
-        maxtemp:  [0.0, 0.0],
-        minlicht: [0.0, 0.0],
-        gemlicht: [0.0, 0.0],
-        maxlicht: [0.0, 0.0],
-        minsensor: [0.0, 0.0],
-        maxsensor: [0.0, 0.0],
-        gemsensor:[0.0, 0.0],
-        tijd: ['0.0', '0.0'],
-        moduleID: moduleID
-    }).then(() => res.json("ok"))
-        .catch(err => res.status(400).json(err));
+    const mintemparray = parseFloat(mintemp);
+    const maxtemparray = parseFloat(maxtemp);
+    const gemtemparray = parseFloat(gemtemp);
+    const minlichtarray = parseFloat(minlicht);
+    const maxlichtarray = parseFloat(maxlicht);
+    const gemlichtarray = parseFloat(gemlicht);
+    const minsensorarray = parseFloat(minsensor);
+    const maxsensorarray = parseFloat(maxsensor);
+    const gemsensorarray = parseFloat(gemlicht);
+    let found = false;
+    fs.readFile('./data/modules.json', 'utf8', (err, jsonString) =>{
+        if(err){
+            res.status(400).json("Error");
+        }
+        try{
+            const modules = JSON.parse(jsonString);
+            modules.modules.forEach(module =>{
+                if(module.moduleId === moduleID){
+                    found = true;
+                    module.mintemp.push(mintemparray);
+                    module.gemtemp.push(gemtemparray);
+                    module.maxtemp.push(maxtemparray);
+                    module.minlicht.push(minlichtarray);
+                    module.gemlicht.push(gemlichtarray);
+                    module.maxlicht.push(maxlichtarray);
+                    module.minsensor.push(minsensorarray);
+                    module.gemsensor.push(gemsensorarray);
+                    module.maxsensor.push(maxsensorarray);
+                    module.tijd.push(tijd);
+                }
+            });
+            if(found){
+                fs.writeFile('./data/modules.json', JSON.stringify(modules), (err) =>{
+                    if(err){
+                        res.status(400).send(err)
+                    }
+                    res.send("ok");
+                })
+            }else{
+                modules.modules.push({
+                    moduleId: moduleID,
+                    tijd: [tijd],
+                    mintemp: [mintemparray],
+                    gemtemp: [gemtemparray],
+                    maxtemp: [maxtemparray],
+                    minlicht: [minlichtarray],
+                    gemlicht: [gemlichtarray],
+                    maxlicht: [maxlichtarray],
+                    minsensor: [minsensorarray],
+                    gemsensor: [gemsensorarray],
+                    maxsensor: [maxsensorarray],
+                });
+                fs.writeFile('./data/modules.json', JSON.stringify(modules), (err) =>{
+                    if(err){
+                        res.status(400).send(err)
+                    }
+                    res.send("ok");
+                })
+            }
+        }catch(err){
+            res.status(400).json("Error translating JsonString");
+        }
+    })
 });
 
-const createModule = (mintemp, gemtemp, maxtemp, minlicht, maxlicht, gemlicht, minsensor, maxsensor, gemsensor, moduleID, res, tijd) => {
-
-
-    // const update = knex('modules')
-    //     .update({
-    //         mintemp: db.raw('array_append(mintemp, ?)', parseFloat(mintemp)),
-    //         gemtemp: db.raw('array_append(gemtemp, ?)', parseFloat(gemtemp)),
-    //         maxtemp: db.raw('array_append(maxtemp, ?)', parseFloat(maxtemp)),
-    //         minlicht: db.raw('array_append(minlicht, ?)', parseFloat(minlicht)),
-    //         gemlicht: db.raw('array_append(gemlicht, ?)', parseFloat(gemlicht)),
-    //         maxlicht: db.raw('array_append(maxlicht, ?)', parseFloat(maxlicht)),
-    //         minsensor: db.raw('array_append(minsensor, ?)', parseFloat(minsensor)),
-    //         maxsensor: db.raw('array_append(maxsensor, ?)', parseFloat(maxsensor)),
-    //         gemsensor: db.raw('array_append(gemsensor, ?)', parseFloat(gemsensor)),
-    //         tijd: db.raw('array_append(tijd, ?)', tijd)})
-    //     .whereRaw(`modules.moduleID = '${moduleID}'`);
-    //
-    // const query = util.format(
-    //     '%s ON CONFLICT (moduleID) DO UPDATE SET %s',
-    //     insert.toString(),
-    //     update.toString().replace(/^update\s.*\sset\s/i, '')
-    // );
-    // db.raw(query).then(msg => res.status(200).json('ok'))
-    //     .catch(err => res.status(400).json(err))
-};
 
 app.get('/', (req, res) =>{
     res.json(db.users);
@@ -192,21 +192,45 @@ app.get('/profile/:id', (req, res) =>{
 });
 
 app.get('/module/:id', (req,res) =>{
-    const {id} = req.params;
-    let found = false;
-    modules.modules.forEach(module =>{
-        if(module.id === id){
-            found = true;
-            return setTimeout((function() {res.send(module)}), 1000);
+    fs.readFile('./data/modules.json', 'utf8', (err, jsonString) =>{
+        if(err){
+            console.log("File read failed: ", err);
+            res.status(400).json("Error");
         }
-    });
-    if(!found){
-        return res.status(400).json("no such article")
-    }
+        try{
+            const modules = JSON.parse(jsonString);
+            const {id} = req.params;
+            let found = false;
+            modules.modules.forEach(module =>{
+                if(module.moduleId === id){
+                    found = true;
+                    return setTimeout((function() {res.send(module)}), 1000);
+                }
+            });
+            if(!found){
+                return res.status(400).json("no such article")
+            }
+        }catch(err){
+            res.status(400).json("Error translating JsonString");
+        }
+    })
 });
 
 app.get('/modules', (req, res) =>{
-    return setTimeout((function() {res.send(modules.modules)}), 1000)
+    fs.readFile('./data/modules.json', 'utf8', (err, jsonString) =>{
+        if(err){
+            console.log("File read failed: ", err);
+            res.status(400).json("Error");
+        }
+        try{
+            const modules = JSON.parse(jsonString);
+            res.send(modules.modules);
+        }catch(err){
+            console.log(err);
+            res.status(400).json("Error");
+        }
+    })
+
 });
 
 app.get("/adres", (req, res) =>{
