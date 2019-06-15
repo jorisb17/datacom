@@ -8,7 +8,7 @@ import CardContent from '@material-ui/core/CardContent/index';
 import Button from '@material-ui/core/Button/index';
 import Typography from '@material-ui/core/Typography/index';
 import Divider from '@material-ui/core/Divider/index';
-import MainChart from "../Chart/MainChart";
+import DetailChart from "../Chart/DetailChart";
 
 
 class ImgMediaCard extends Component {
@@ -17,15 +17,15 @@ class ImgMediaCard extends Component {
     };
 
     componentDidMount() {
-        const max = this.props.module.tijd.length;
+        const max = this.props.tijd.length;
         console.log(max);
         let dataArray = [];
         for(let i = 0; i < max; i++){
             const obj ={
-                name: this.props.module.tijd[i],
-                temp: this.props.module.gemtemp[i],
-                licht: this.props.module.gemlicht[i],
-                sensor: this.props.module.gemsensor[i],
+                name: this.props.tijd[i],
+                min: this.props.min[i],
+                gem: this.props.gem[i],
+                max: this.props.max[i],
             };
             dataArray.push(obj);
         }
@@ -36,7 +36,7 @@ class ImgMediaCard extends Component {
 
 
     render(){
-        const {name, moduleId} = this.props.module;
+        const {name, moduleId} = this.props;
         return (
             <Card style={{'height': '100%'}}>
                 <CardActionArea>
@@ -45,21 +45,13 @@ class ImgMediaCard extends Component {
                             {name}
                         </Typography>
                         <br/>
-                        <MainChart data={this.state.data}/>
+                        <DetailChart data={this.state.data}/>
                         <br/>
-                        <Divider/>
                         <br/>
                     </CardContent>
                 </CardActionArea>
-                <CardActions>
-                    <Link style={{"textDecoration": 'none'}} to={`/modules/${moduleId}`}>
-                        <Button className={'link'} size="small" color="primary">
-                            Meer
-                        </Button>
-                    </Link>
-                </CardActions>
             </Card>
-    );
+        );
     }
 }
 

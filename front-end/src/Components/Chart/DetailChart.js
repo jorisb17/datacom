@@ -9,7 +9,7 @@ import Tooltip from 'recharts/lib/component/Tooltip';
 import Legend from 'recharts/lib/component/Legend';
 
 
-function Chart({data}) {
+function DetailChart({data}) {
     return (
         <ResponsiveContainer width="99%" height={320}>
             <LineChart data={data}>
@@ -18,14 +18,14 @@ function Chart({data}) {
                 <CartesianGrid vertical={false} strokeDasharray="3 3" />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="temp" stroke="#ff4081" />
-                <Line type="monotone" dataKey="licht" stroke="#00e676" />
-                <Line type="monotone" dataKey="sensor" stroke="#00b0ff" />
+                <Line type="monotone" dataKey="min" stroke="#ff4081" />
+                <Line type="monotone" dataKey="gem" stroke="#00e676" />
+                <Line type="monotone" dataKey="max" stroke="#00b0ff" />
             </LineChart>
         </ResponsiveContainer>
     );
 }
 
-export default Chart;
+export default DetailChart;
 
 

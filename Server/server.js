@@ -22,43 +22,6 @@ app.use(cores());
 
 const saltRounds = 10;
 
-let adres = '01101101';
-
-const modules = ({
-    modules: [
-        {
-            id: '1',
-            name: 'Module 1',
-            temp: [20,22,25,18,30,31,34],
-            licht: [10,8,12,9,15,16,20],
-            sensor: [30,10,25,15,18,33,20],
-            tijd: ['0:00', '0:20', '0:25', "0:40", '0:54', "1:40", "1:50"],
-            data: [
-                {name: '0:00', temp: 20, licht: 10, sensor: 30},
-                {name: '0:20', temp: 22, licht: 8, sensor: 10},
-                {name: '0:25', temp: 25, licht: 12, sensor: 25},
-                {name: '0:40', temp: 18, licht: 9, sensor: 15},
-                {name: '0:54', temp: 30, licht: 15, sensor: 18},
-                {name: '1:40', temp: 31, licht: 16, sensor: 33},
-                {name: '1:50', temp: 34, licht: 20, sensor: 20}
-            ]
-        },
-        {
-            id: '2',
-            name: "Module 2",
-            data: [
-                {name: '0:00', temp: 30, licht: 9, sensor: 30},
-                {name: '0:20', temp: 22, licht: 20, sensor: 44},
-                {name: '0:25', temp: 15, licht: 40, sensor: 22},
-                {name: '0:40', temp: 12, licht: 2, sensor: 12},
-                {name: '0:54', temp: 33, licht: 15, sensor: 12},
-                {name: '1:40', temp: 32, licht: 22, sensor: 32},
-                {name: '1:50', temp: 18, licht: 21, sensor: 22}
-            ]
-        }
-    ]
-});
-
 app.get("/arduino", (req, res) =>{
     const {mintemp, gemtemp, maxtemp, minlicht, maxlicht, gemlicht, minsensor, maxsensor, gemsensor, moduleID, tijd} = req.query;
     const mintemparray = parseFloat(mintemp);

@@ -9,7 +9,7 @@ const ModulesList = ({modules}) =>{
         <Grid container spacing={16}>
             {modules.map(module => {
                 return (
-                    <Grid key={module.id} item xs={12} sm={12} md={12} lg={6}>
+                    <Grid key={module.moduleId} item xs={12} sm={12} md={12} lg={6}>
                         <Card
                             module={module}
                         />

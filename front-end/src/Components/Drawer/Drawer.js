@@ -81,13 +81,6 @@ class ResDrawer extends React.Component {
                         </ListItem>
                     </Link>
                 </List>
-                <Divider />
-                <List>
-                    <ListItem button>
-                        <ListItemIcon><SettingsIcon /></ListItemIcon>
-                        <ListItemText primary={"Instellingen"} />
-                    </ListItem>
-                </List>
             </div>
         );
 
