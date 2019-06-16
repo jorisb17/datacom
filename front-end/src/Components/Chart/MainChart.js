@@ -20,7 +20,7 @@ function MainChart({data}) {
                 <Legend />
                 <Line type="monotone" dataKey="temp" stroke="#ff4081" />
                 <Line type="monotone" dataKey="licht" stroke="#00e676" />
-                <Line type="monotone" dataKey="sensor" stroke="#00b0ff" />
+                <Line type="monotone" dataKey="sensor_3" stroke="#00b0ff" />
             </LineChart>
         </ResponsiveContainer>
     );

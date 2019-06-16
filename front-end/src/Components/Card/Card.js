@@ -25,7 +25,7 @@ class ImgMediaCard extends Component {
                 name: this.props.module.tijd[i],
                 temp: this.props.module.gemtemp[i],
                 licht: this.props.module.gemlicht[i],
-                sensor: this.props.module.gemsensor[i],
+                sensor_3: this.props.module.gemsensor[i],
             };
             dataArray.push(obj);
         }
@@ -36,13 +36,13 @@ class ImgMediaCard extends Component {
 
 
     render(){
-        const {name, moduleId} = this.props.module;
+        const {moduleId} = this.props.module;
         return (
             <Card style={{'height': '100%'}}>
                 <CardActionArea>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                            {name}
+                            {moduleId}
                         </Typography>
                         <br/>
                         <MainChart data={this.state.data}/>

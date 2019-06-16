@@ -32,7 +32,7 @@ app.get("/arduino", (req, res) =>{
     const gemlichtarray = parseFloat(gemlicht);
     const minsensorarray = parseFloat(minsensor);
     const maxsensorarray = parseFloat(maxsensor);
-    const gemsensorarray = parseFloat(gemlicht);
+    const gemsensorarray = parseFloat(gemsensor);
     let found = false;
     fs.readFile('./data/modules.json', 'utf8', (err, jsonString) =>{
         if(err){

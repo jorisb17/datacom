@@ -36,7 +36,7 @@ class ImgMediaCard extends Component {
 
 
     render(){
-        const {name, moduleId} = this.props;
+        const {name} = this.props;
         return (
             <Card style={{'height': '100%'}}>
                 <CardActionArea>

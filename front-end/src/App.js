@@ -33,7 +33,7 @@ class App extends Component{
                 <Route
                     render={() => (
                         <div>
-                            {this.props.auth?
+                            {this.state.auth?
                             <ResDrawer>
                                 <Switch>
                                     <Route exact path="/" component={AsyncMain}/>

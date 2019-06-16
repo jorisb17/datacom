@@ -20,13 +20,13 @@ class ModuleDetailedPage extends Component {
         return(
             <Grid container spacing={8}>
                 <Grid item md={12} sm={12}>
-                    <DetailCard min={module.mintemp} gem={module.gemtemp} max={module.maxtemp} tijd={module.tijd} name={module.name} moduleId={module.ModuleId}/>
+                    <DetailCard name={"Temperatuur"} min={module.mintemp} gem={module.gemtemp} max={module.maxtemp} tijd={module.tijd} moduleId={module.ModuleId}/>
                 </Grid>
                 <Grid item md={12} sm={12}>
-                    <DetailCard min={module.minlicht} gem={module.gemlicht} max={module.maxlicht} tijd={module.tijd} name={module.name} moduleId={module.ModuleId}/>
+                    <DetailCard name={"Licht"} min={module.minlicht} gem={module.gemlicht} max={module.maxlicht} tijd={module.tijd} moduleId={module.ModuleId}/>
                 </Grid>
                 <Grid item md={12} sm={12}>
-                    <DetailCard min={module.minsensor} gem={module.gemsensor} max={module.maxsensor} tijd={module.tijd} name={module.name} moduleId={module.ModuleId}/>
+                    <DetailCard name={"Sensor 3"} min={module.minsensor} gem={module.gemsensor} max={module.maxsensor} tijd={module.tijd} moduleId={module.ModuleId}/>
                 </Grid>
             </Grid>
         )
