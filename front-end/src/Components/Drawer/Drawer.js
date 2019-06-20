@@ -9,9 +9,7 @@ import Divider from '@material-ui/core/Divider/index';
 import Drawer from '@material-ui/core/Drawer/index';
 import Hidden from '@material-ui/core/Hidden/index';
 import IconButton from '@material-ui/core/IconButton/index';
-import DashboardIcon from '@material-ui/icons/DashboardRounded';
 import TimelineIcon from '@material-ui/icons/TimelineRounded';
-import SettingsIcon from '@material-ui/icons/SettingsRounded';
 import MenuIcon from "@material-ui/icons/MenuRounded"
 import List from '@material-ui/core/List/index';
 import ListItem from '@material-ui/core/ListItem/index';

@@ -16,17 +16,17 @@ class ModuleDetailedPage extends Component {
     }
 
     component = () =>{
-        module = this.props.module;
+        const modules = this.props.module;
         return(
             <Grid container spacing={8}>
                 <Grid item md={12} sm={12}>
-                    <DetailCard name={"Temperatuur"} min={module.mintemp} gem={module.gemtemp} max={module.maxtemp} tijd={module.tijd} moduleId={module.ModuleId}/>
+                    <DetailCard name={"Temperatuur"} min={modules.mintemp} gem={modules.gemtemp} max={modules.maxtemp} tijd={modules.tijd} moduleId={modules.ModuleId}/>
                 </Grid>
                 <Grid item md={12} sm={12}>
-                    <DetailCard name={"Licht"} min={module.minlicht} gem={module.gemlicht} max={module.maxlicht} tijd={module.tijd} moduleId={module.ModuleId}/>
+                    <DetailCard name={"Licht"} min={modules.minlicht} gem={modules.gemlicht} max={modules.maxlicht} tijd={modules.tijd} moduleId={modules.ModuleId}/>
                 </Grid>
                 <Grid item md={12} sm={12}>
-                    <DetailCard name={"Sensor 3"} min={module.minsensor} gem={module.gemsensor} max={module.maxsensor} tijd={module.tijd} moduleId={module.ModuleId}/>
+                    <DetailCard name={"Sensor 3"} min={modules.minsensor} gem={modules.gemsensor} max={modules.maxsensor} tijd={modules.tijd} moduleId={modules.ModuleId}/>
                 </Grid>
             </Grid>
         )

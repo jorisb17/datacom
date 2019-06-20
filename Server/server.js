@@ -22,8 +22,22 @@ app.use(cores());
 
 const saltRounds = 10;
 
+function getDateTime() {
+
+    var date = new Date();
+
+    var hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+
+    var min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+
+    return `${hour}:${min}`;
+
+}
+
 app.get("/arduino", (req, res) =>{
-    const {mintemp, gemtemp, maxtemp, minlicht, maxlicht, gemlicht, minsensor, maxsensor, gemsensor, moduleID, tijd} = req.query;
+    const {mintemp, gemtemp, maxtemp, minlicht, maxlicht, gemlicht, minsensor, maxsensor, gemsensor, moduleID} = req.query;
     const mintemparray = parseFloat(mintemp);
     const maxtemparray = parseFloat(maxtemp);
     const gemtemparray = parseFloat(gemtemp);
@@ -33,6 +47,7 @@ app.get("/arduino", (req, res) =>{
     const minsensorarray = parseFloat(minsensor);
     const maxsensorarray = parseFloat(maxsensor);
     const gemsensorarray = parseFloat(gemsensor);
+    const tijd = getDateTime();
     let found = false;
     fs.readFile('./data/modules.json', 'utf8', (err, jsonString) =>{
         if(err){

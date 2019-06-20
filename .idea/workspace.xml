@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ca003c8a-dba3-42b9-a6e0-89b398108794" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Arduino/Arduino.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Arduino/Arduino.ino" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/data/modules.json" beforeDir="false" afterPath="$PROJECT_DIR$/Server/data/modules.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Server/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/Components/Card/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Components/Card/Card.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/Components/Card/DetailCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Components/Card/DetailCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/Components/Chart/MainChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Components/Chart/MainChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/Components/Drawer/Drawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Components/Drawer/Drawer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/Modules/Detailed/ModuleDetailedPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Modules/Detailed/ModuleDetailedPage.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -25,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front-end/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="32" column="22" lean-forward="true" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+            <state relative-caret-position="576">
+              <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -37,8 +36,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+            <state relative-caret-position="738">
+              <caret line="71" column="15" lean-forward="true" selection-start-line="71" selection-start-column="15" selection-end-line="71" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -46,8 +45,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server/data/modules.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="209" selection-start-column="209" selection-end-column="209" />
+            <state relative-caret-position="18">
+              <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -55,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front-end/src/Modules/Detailed/ModuleDetailedPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+            <state relative-caret-position="198">
+              <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -67,7 +66,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front-end/src/Components/Chart/DetailChart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
+            <state relative-caret-position="252">
               <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -79,7 +78,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front-end/src/Components/Chart/MainChart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
+            <state relative-caret-position="252">
               <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -91,7 +90,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front-end/src/Components/Card/Card.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
+            <state relative-caret-position="306">
               <caret line="27" column="53" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="53" />
             </state>
           </provider>
@@ -100,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front-end/src/Components/Card/DetailCard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="44" column="34" lean-forward="true" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+            <state relative-caret-position="653">
+              <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -112,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front-end/src/Modules/ModulePage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="34" column="28" lean-forward="true" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+            <state relative-caret-position="504">
+              <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -124,11 +123,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front-end/src/Components/Drawer/Drawer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1062">
-              <caret line="82" column="23" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="198">
+              <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -195,21 +191,22 @@
         <option value="$PROJECT_DIR$/front-end/src/Components/Chart/LichtChart.js" />
         <option value="$PROJECT_DIR$/front-end/src/Components/Chart/SensorChart.js" />
         <option value="$PROJECT_DIR$/front-end/src/Components/Chart/DetailChart.js" />
-        <option value="$PROJECT_DIR$/front-end/src/Components/Drawer/Drawer.js" />
-        <option value="$PROJECT_DIR$/front-end/src/Components/Card/DetailCard.js" />
-        <option value="$PROJECT_DIR$/front-end/src/Modules/Detailed/ModuleDetailedPage.js" />
         <option value="$PROJECT_DIR$/front-end/src/App.js" />
         <option value="$PROJECT_DIR$/front-end/src/Components/Card/Card.js" />
         <option value="$PROJECT_DIR$/front-end/src/Components/Chart/MainChart.js" />
+        <option value="$PROJECT_DIR$/front-end/src/Components/Drawer/Drawer.js" />
+        <option value="$PROJECT_DIR$/front-end/src/Modules/Detailed/ModuleDetailedPage.js" />
+        <option value="$PROJECT_DIR$/front-end/src/Components/Card/DetailCard.js" />
         <option value="$PROJECT_DIR$/Server/server.js" />
         <option value="$PROJECT_DIR$/Server/data/modules.json" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-6" />
-    <option name="width" value="1932" />
-    <option name="height" value="1086" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1963" />
+    <option name="y" value="91" />
+    <option name="width" value="1908" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -219,6 +216,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -242,38 +240,7 @@
               <item name="datacom" type="462c0819:PsiDirectoryNode" />
               <item name="front-end" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="datacom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="datacom" type="462c0819:PsiDirectoryNode" />
-              <item name="front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Card" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="datacom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="datacom" type="462c0819:PsiDirectoryNode" />
-              <item name="front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Chart" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="datacom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="datacom" type="462c0819:PsiDirectoryNode" />
-              <item name="front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="datacom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="datacom" type="462c0819:PsiDirectoryNode" />
-              <item name="front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Modules" type="462c0819:PsiDirectoryNode" />
-              <item name="Detailed" type="462c0819:PsiDirectoryNode" />
+              <item name="constants" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="datacom" type="b2602c69:ProjectViewProjectNode" />
@@ -290,7 +257,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -360,14 +326,19 @@
       <workItem from="1560416089508" duration="4957000" />
       <workItem from="1560619393823" duration="599000" />
       <workItem from="1560678875640" duration="1816000" />
+      <workItem from="1560710518084" duration="169000" />
+      <workItem from="1560710699672" duration="378000" />
+      <workItem from="1560793068841" duration="3000" />
+      <workItem from="1560793356871" duration="689000" />
+      <workItem from="1561048005411" duration="525000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69687000" />
+    <option name="totallyTimeSpent" value="71451000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="1932" height="1086" extended-state="7" />
+    <frame x="1914" y="27" width="1932" height="1059" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2124407" />
@@ -587,20 +558,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front-end/src/Components/Chart/SensorChart.js" />
     <entry file="file://$PROJECT_DIR$/front-end/src/Components/Chart/TempChart.js" />
-    <entry file="file://$PROJECT_DIR$/front-end/src/Components/Drawer/Drawer.js">
+    <entry file="file://$PROJECT_DIR$/front-end/src/Modules/Detailed/ModuleDetailedPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1062">
-          <caret line="82" column="23" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
+        <state relative-caret-position="198">
+          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/src/Components/Chart/DetailChart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/src/Components/Chart/MainChart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/src/Components/Card/Card.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="27" column="53" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/front-end/src/Modules/ModulePage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="34" column="28" lean-forward="true" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+        <state relative-caret-position="504">
+          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/src/Components/Drawer/Drawer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/src/Components/Card/DetailCard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="653">
+          <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -609,74 +624,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front-end/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="32" column="22" lean-forward="true" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+        <state relative-caret-position="576">
+          <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/src/Modules/Detailed/ModuleDetailedPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/src/Components/Card/Card.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="27" column="53" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/src/Components/Card/DetailCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="44" column="34" lean-forward="true" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/src/Components/Chart/MainChart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/src/Components/Chart/DetailChart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+        <state relative-caret-position="738">
+          <caret line="71" column="15" lean-forward="true" selection-start-line="71" selection-start-column="15" selection-end-line="71" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/data/modules.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="209" selection-start-column="209" selection-end-column="209" />
+        <state relative-caret-position="18">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

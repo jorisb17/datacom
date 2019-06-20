@@ -1,1 +1,3 @@
-{"modules":[{"moduleId":"000001101","tijd":["0:00"],"mintemp":[16.6],"gemtemp":[20.8],"maxtemp":[25.2],"minlicht":[27],"gemlicht":[40],"maxlicht":[65],"minsensor":[5.3],"gemsensor":[10.4],"maxsensor":[20.1]}]}
+{
+  "modules": []
+}
